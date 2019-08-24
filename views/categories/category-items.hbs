@@ -1,0 +1,93 @@
+{{>common/header}}
+<!-- Page Title-->
+<div class="page-title">
+    <div class="container">
+        <div class="column">
+            <h1>{{title}}</h1>
+        </div>
+    </div>
+</div>
+<!-- Page Content-->
+<div class="container padding-bottom-3x mb-1">
+    <div class="row">
+        <!-- Products-->
+        {{#if isAdmin}}
+        <div class="col-md-6 order-md-2">
+        {{else}}
+        <div class="col-md-9 order-md-2">
+        {{/if}}
+        {{#each itemRow}}
+            <div class="row">
+                {{#each itemRowCollection}}
+                <div class="col-md-4 col-sm-6">
+                    <div class="product-card mb-30">
+                        {{#if isFeatured}}
+                        <div class="product-badge bg-danger">Sale</div>
+                        {{/if}}
+                        <img src="{{imageUrl}}" alt="Product">
+                        <div class="product-card-body">
+                            <h3 class="product-title">
+                                {{itemName}}
+                            </h3>
+                            <h4 class="product-price">
+                                ${{price}}
+                            </h4>
+                        </div>
+                        <div class="product-button-group">
+                            <a class="product-button" href="javascript:addToCart({{itemId}})" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!">
+                                <i class="icon-shopping-cart"></i>
+                                <span>To Cart</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        {{/each}}
+        </div>
+        {{#if isAdmin}}
+        <div class="col-md-3 order-md-3">
+            <form method="post" encType="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-3"><label for="itemName">Item Name:</label></div>
+                    <div class="col-md-9"><input type="text" name="itemName"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label for="price">Price:</label></div>
+                    <div class="col-md-9"><input type="number" name="price"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label for="price">Count:</label></div>
+                    <div class="col-md-9"><input type="number" name="count"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label for="featured">Featured:</label></div>
+                    <div class="col-md-9"><input type="checkbox" name="isFeatured" value="featured"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><label for="itemImageFile">Image:</label></div>
+                    <div class="col-md-9"><input type="file" name="itemImageFile"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><button type="submit">Submit</button></div>
+                </div>
+            </form>
+        </div>
+        {{/if}}
+        {{>common/sidebar}}
+    </div>
+</div>
+<script>
+    function addToCart(itemId) {
+      $.ajax({
+          dataType: 'json',
+          url: '/cart/item',
+          contentType: 'application/json',
+          data: JSON.stringify({itemId: itemId}),
+          method: 'POST'
+      }).done(data => {
+        //console.log(data);
+          $('#itemCount').text(data.items);
+      })
+    }
+</script>

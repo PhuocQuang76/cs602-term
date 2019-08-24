@@ -1,0 +1,56 @@
+{{>common/header}}
+<!-- Page Title-->
+<div class="page-title">
+    <div class="container">
+        <div class="column">
+            <h1>{{title}}</h1>
+        </div>
+    </div>
+</div>
+<!-- Page Content-->
+<div class="container padding-bottom-3x mb-1">
+    <div class="row">
+        <!-- Products-->
+        <div class="col-md-9 order-md-2">
+            <form action="/admin/category" method="post" encType="multipart/form-data">
+                {{#if isError}}
+                    <div class="row">
+                        <div class="col-md-12 alert-danger">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                {{/if}}
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="categoryDescription">Category Description:</label>
+                    </div>
+                    <div class="col-md=9 d-flex">
+                        <input name="categoryDescription"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="categoryImageUrl">Image Url:</label>
+                    </div>
+                    <div class="col-md=9 d-flex">
+                        <input name="categoryImageUrl"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="categoryImageFile">Image File:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="file" name="categoryImageFile"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {{>common/sidebar}}
+    </div>
+</div>

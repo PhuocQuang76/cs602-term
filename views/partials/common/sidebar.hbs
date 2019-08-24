@@ -1,0 +1,18 @@
+<div class="col-lg-3 order-lg-1">
+    <aside class="sidebar sidebar-offcanvas position-left">
+        <span class="sidebar-close">
+            <i class="icon-x"></i>
+        </span>
+        <!-- Widget Categories-->
+        <section class="widget widget-categories">
+            <h3 class="widget-title">Shop Categories</h3>
+            <ul>
+                {{#each categories}}
+                    <li>
+                        <a href="/category/{{id}}">{{name}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+    </aside>
+</div>

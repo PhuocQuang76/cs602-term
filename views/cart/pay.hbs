@@ -1,0 +1,111 @@
+{{>common/header}}
+<!-- Page Title-->
+<div class="page-title">
+    <div class="container">
+        <div class="column">
+            <h1>{{title}}</h1>
+        </div>
+    </div>
+</div>
+<!-- Page Content-->
+<div class="container padding-bottom-3x mb-1">
+    {{#if isError}}
+        <div class="row, alert-danger">{{errorMessage}}</div>
+    {{/if}}
+    <form method="post" action="/cart/pay.html" id="pay-form">
+        <div class="col-xl-9 col-lg-8">
+            <h4>Address</h4>
+            <hr class="padding-bottom-1x">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-fn">First Name</label>
+                        <input class="form-control" type="text" id="checkout-fn" name="checkout-fn" value="{{firstname}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-ln">Last Name</label>
+                        <input class="form-control" type="text" id="checkout-ln" name="checkout-ln" value="{{lastname}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-email">E-mail Address</label>
+                        <input class="form-control" type="email" id="checkout-email" name="checkout-email" value="{{email}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        &nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div class="row padding-bottom-1x">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-address1">Address 1</label>
+                        <input class="form-control" type="text" id="checkout-address1" name="checkout-address1" value="{{address1}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-address2">Address 2</label>
+                        <input class="form-control" type="text" id="checkout-address2" name="checkout-address2" value="{{address2}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-city">City</label>
+                        <input class="form-control" name="checkout-city" value="{{city}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-zip">ZIP Code</label>
+                        <input class="form-control" type="text" id="checkout-zip" name="checkout-zip" value="{{zip}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-state">State</label>
+                        <input class="form-control" name="checkout-state" value="{{state}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-country">Country</label>
+                        <input class="form-control" name="checkout-country" value="{{country}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-cc">Credit Cart</label>
+                        <input class="form-control" name="checkout-cc" value="{{cc}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="checkout-cc">Credit Cart Exp</label>
+                        <input class="form-control" name="checkout-cc-exp" value="{{ccexp}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between paddin-top-1x mt-4">
+            <a class="btn btn-outline-secondary" href="/cart/checkout.html">
+                <i class="icon-arrow-left"></i>
+                <span class="hidden-xs-down">&nbsp;Back To Cart</span>
+            </a>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+</div>

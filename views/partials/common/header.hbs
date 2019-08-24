@@ -1,0 +1,82 @@
+<!-- Header-->
+<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+<header class="site-header navbar-sticky">
+    <!-- Topbar-->
+    <div class="topbar d-flex justify-content-between">
+        <!-- Logo-->
+        <div class="site-branding d-flex"><a class="site-logo align-self-center" href="/"><img src="/img/logo/logo.png" alt="PQ's Shop"></a></div>
+        <!-- Search / Categories-->
+        <div class="search-box-wrap d-flex">
+            <div class="search-box-inner align-self-center">
+                <div class="search-box d-flex">
+                    <div class="btn-group categories-btn">
+                        <button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"><i class="icon-menu text-lg"></i>&nbsp;Categories</button>
+                        <div class="dropdown-menu mega-dropdown">
+                            {{#each groupedCategory}}
+                                <div class="row">
+                                    {{#each categoryCollection}}
+                                        <div class="col-sm-3"><a class="d-block navi-link text-center mb-30" href="/category/{{id}}"><img class="d-block" src="{{image_url}}"><span class="text-gray-dark">{{name}}</span></a></div>
+                                    {{/each}}
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <!--<form class="input-group" method="get"><span class="input-group-btn">-->
+                      <!--<button type="submit"><i class="icon-search"></i></button></span>-->
+                        <!--<input class="form-control" type="search" placeholder="Search for anything">-->
+                    <!--</form>-->
+                </div>
+            </div>
+        </div>
+        <!-- Toolbar-->
+        <div class="toolbar d-flex">
+            {{#if isAdmin}}
+            <div class="toolbar-item">
+                <a href="/admin/category">
+                    <div>
+                        <i class="icon-database"></i>
+                        <span class="text-label">Administer</span>
+                    </div>
+                </a>
+            </div>
+            {{/if}}
+            {{#if user includeZero=true}}
+                <div class="toolbar-item">
+                    <a href="/user/logout.html">
+                        <div>
+                            <i class="icon-user"></i>
+                            <span class="text-label">Logout</span>
+                        </div>
+                    </a>
+                </div>
+            {{/if}}
+            {{#if anonymous}}
+            <div class="toolbar-item">
+                <a href="/user/login.html">
+                    <div>
+                        <i class="icon-user"></i>
+                        <span class="text-label">Sign In / Up</span>
+                    </div>
+                </a>
+                <div class="toolbar-dropdown text-center px-3">
+                    <p class="text-xs mb-3 pt-2">Sign in to your account or register new one to have full control over your orders, receive bonuses and more.</p>
+                    <a class="btn btn-primary btn-sm btn-block" href="/user/login.html">Sign In</a>
+                    <p class="text-xs text-muted mb-2">New customer?&nbsp;<a href="/user/login.html">Register</a></p>
+                </div>
+
+            </div>
+            {{/if}}
+            <div class="toolbar-item">
+                <a href="/cart/checkout.html">
+                    <div>
+                        <span class="cart-icon">
+                            <i class="icon-shopping-cart"></i>
+                            <span id="itemCount" class="count-label">{{cartItemCount}}</span>
+                        </span>
+                        <span class="text-label">Cart</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
