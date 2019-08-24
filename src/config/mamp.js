@@ -1,9 +1,9 @@
 
 module.exports = {
     mysql: {
-        user: 'cs602user',
-        password: 'cs602password',
-        database: 'cs602_term',
+        user: 'cs602pquser',
+        password: 'cs602pqpassword',
+        database: 'cs602termpq',
         host: 'localhost',
         port: 3306,
         "connector": "mysql",

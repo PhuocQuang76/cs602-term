@@ -3,7 +3,9 @@
 module.exports = req => {
   let cart = req.session.cart;
   let items = req.body.itemId;
+  if (!Array.isArray(items)) items = [items];
   let counts = req.body.itemCount;
+  if (!Array.isArray(counts)) counts = [counts];
   if (cart) {
     for (let counter = 0; counter < items.length; counter++) {
       try {

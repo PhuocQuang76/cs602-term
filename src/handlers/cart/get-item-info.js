@@ -21,17 +21,19 @@ module.exports = (req) => {
         let returnItems = [];
         let total = 0;
         items.map(item => {
-          let count = cart[item.itemId];
-          let itemTotal = (count * item.price);
-          total += itemTotal
-          returnItems.push({
-            itemId: item.itemId,
-            itemImage: item.imageUrl,
-            itemCount: count,
-            itemName: item.itemName,
-            itemPrice: item.price.toFixed(2),
-            itemTotal: itemTotal.toFixed(2)
-          });
+          if (item) {
+              let count = cart[item.itemId];
+              let itemTotal = (count * item.price);
+              total += itemTotal
+              returnItems.push({
+                  itemId: item.itemId,
+                  itemImage: item.imageUrl,
+                  itemCount: count,
+                  itemName: item.itemName,
+                  itemPrice: item.price.toFixed(2),
+                  itemTotal: itemTotal.toFixed(2)
+              });
+          }
         });
         resolve({items: returnItems, total: total.toFixed(2)});
       }).catch(err => reject(err));
